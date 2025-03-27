@@ -29,6 +29,9 @@
             .shamrock-img:hover {
                 transform: scale(1.05);
             }
+            .easy { background-color: #d4edda; color: #155724; border: 2px solid #155724; }
+            .medium { background-color: #fff3cd; color: #856404; border: 2px solid #856404; }
+            .hard { background-color: #f8d7da; color: #721c24; border: 2px solid #9e424b; }
         </style>
     </head>
 
@@ -58,11 +61,12 @@
                 <div class="d-flex justify-content-center mb-3">
                     <input type="text" id="letterInput" maxlength="1" class="form-control w-auto me-2" placeholder="Enter a Letter">
                     <button id="guessBtn" class="btn btn-primary" onclick="guessLetter()">Guess</button>
+                    <button id="restartBtn" class="btn btn-secondary ms-2" onclick="restartGame()">Restart</button>
                 </div>
 
                 <p id="wrongLetters" class="fw-bold text-danger mb-3">Wrong Guesses: </p>
 
-                <img src="img/image6.jpg" alt="Shamrock" id="shamrock" class="shamrock-img mb-3">
+                <img src="img/image6.jpg" alt="Shamrock Health" id="shamrock" class="shamrock-img mb-3">
             </div>
 
             <!-- Result Modal -->
