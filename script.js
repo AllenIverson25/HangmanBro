@@ -171,7 +171,7 @@ function resetToLevelSelection() {
     
     document.getElementById('wrongLetters').textContent = 'Wrong Guesses: ';
     document.getElementById('letterInput').value = '';
-    document.getElementById('shamrock').src = 'img/image6.jpg';
+    document.getElementById('shamrock').src = 'imgs/goodluck.jpg';
     document.getElementById('endGameOverlay').style.display = 'none';
 }
 
