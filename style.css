@@ -1,5 +1,5 @@
 body {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, #1e8449, #2c3e50);
     color: #ecf0f1;
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -9,67 +9,22 @@ body {
     margin: 0;
 }
 
+/* Main Container */
 main.container {
-    text-align: center;
     padding: 2rem;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Title */
 h1 {
-    font-size: 3rem;
+    font-family: 'Irish Grover', cursive;
+    font-size: 3.5rem;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    background: linear-gradient(45deg, #2ecc71, #FFD700);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-/* Enhanced Button Styles */
-.btn-custom {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-.btn-custom::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: 0.5s;
-}
-.btn-custom:hover::before {
-    left: 100%;
-}
-.btn-custom:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-}
-.btn-difficulty.easy-btn {
-    background: linear-gradient(45deg, #28a745, #34c759);
-    color: white;
-}
-.btn-difficulty.medium-btn {
-    background: linear-gradient(45deg, #ffc107, #ffca2c);
-    color: #333;
-}
-.btn-difficulty.hard-btn {
-    background: linear-gradient(45deg, #dc3545, #e4606d);
-    color: white;
-}
-.btn-guess {
-    background: linear-gradient(45deg, #17a2b8, #1abc9c);
-    color: white;
 }
 
 /* Guessed Word Display */
@@ -82,64 +37,32 @@ h1 {
     -webkit-text-fill-color: transparent;
     padding: 0.5rem 1rem;
     border-radius: 10px;
-    display: inline-block;
     font-size: 2.5rem;
 }
 
-/* Score Tracker */
-#scoreTracker {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-/* Letter Input */
-#letterInput {
-    background-color: #34495e;
-    color: #ecf0f1;
-    border: 2px solid #2ecc71;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    text-align: center;
-    font-size: 1.2rem;
-}
-#letterInput::placeholder {
-    color: #95a5a6;
-}
-
-/* Wrong Guesses */
-#wrongLetters {
-    font-size: 1.2rem;
-    background: rgba(231, 76, 60, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    display: inline-block;
-}
-
+/* Shamrock Lives Image */
 .shamrock-img {
-    max-height: 250px;
+    max-height: 150px;
     transition: all 0.3s ease;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.7);
 }
 .shamrock-img:hover {
     transform: scale(1.05);
 }
 
-.easy {
+/* Difficulty Box */
+.difficulty-box {
     background-color: #d4edda;
     color: #155724;
     border: 2px solid #155724;
 }
-.medium {
+.difficulty-box.medium {
     background-color: #fff3cd;
     color: #856404;
     border: 2px solid #856404;
 }
-.hard {
+.difficulty-box.hard {
     background-color: #f8d7da;
     color: #721c24;
     border: 2px solid #9e424b;
@@ -152,7 +75,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(44, 62, 80, 0.9));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(30, 132, 73, 0.9));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -162,20 +85,21 @@ h1 {
     display: none;
 }
 .end-game-text {
+    font-family: 'Irish Grover', cursive;
     font-size: 7rem;
     font-weight: 900;
     text-transform: uppercase;
     text-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.3);
     letter-spacing: 8px;
     animation: pulse 2s infinite;
-    background: linear-gradient(45deg, #ff0000, #ff5555) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(45deg, #ff0000, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .end-game-text.win {
-    background: linear-gradient(45deg, #00ff00, #55ff55) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(45deg, #00ff00, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 @keyframes pulse {
     0% { transform: scale(1); }
@@ -187,7 +111,7 @@ h1 {
     margin-top: 2rem;
     color: #ecf0f1;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
-    background: linear-gradient(45deg, #ffffff, #cccccc);
+    background: linear-gradient(45deg, #FFD700, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -197,7 +121,7 @@ h1 {
     font-size: 1.8rem;
     background: linear-gradient(45deg, #28a745, #34c759);
     color: white;
-    border: 3px solid #1e7e34;
+    border: 3px solid #FFD700;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2);
     animation: glow 1.5s infinite;
 }

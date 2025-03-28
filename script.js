@@ -53,17 +53,17 @@ function getRandomWord(level) {
 
 function updateDifficultyDisplay(level) {
     let difficultyBox = document.getElementById('difficultyBox');
-    difficultyBox.classList.remove('easy', 'medium', 'hard');
+    difficultyBox.classList.remove('difficulty-box', 'medium', 'hard');
 
     if (level === 'easy') {
         difficultyBox.textContent = 'Difficulty: Easy 🍀';
-        difficultyBox.classList.add('easy');
+        difficultyBox.classList.add('difficulty-box');
     } else if (level === 'medium') {
         difficultyBox.textContent = 'Difficulty: Medium 🌟';
-        difficultyBox.classList.add('medium');
+        difficultyBox.classList.add('difficulty-box', 'medium');
     } else if (level === 'hard') {
         difficultyBox.textContent = 'Difficulty: Hard 💀';
-        difficultyBox.classList.add('hard');
+        difficultyBox.classList.add('difficulty-box', 'hard');
     }
 }
 
@@ -105,7 +105,7 @@ function updateWrongGuess(guessedLetter) {
     wrongGuesses++;
     document.getElementById('wrongLetters').textContent += ` ${guessedLetter}`;
     const remainingHealth = maxMistakes - wrongGuesses;
-    document.getElementById('shamrock').src = `imgs/image${remainingHealth + 1}.jpg`;
+    document.getElementById('shamrock').src = `img/image${remainingHealth + 1}.jpg`;
 
     if (wrongGuesses === maxMistakes) {
         losses++;
@@ -158,7 +158,7 @@ function updateScoreDisplay() {
 
 function getCurrentDifficulty() {
     const difficultyBox = document.getElementById('difficultyBox');
-    if (difficultyBox.classList.contains('easy')) return 'easy';
+    if (difficultyBox.classList.contains('difficulty-box') && !difficultyBox.classList.contains('medium') && !difficultyBox.classList.contains('hard')) return 'easy';
     if (difficultyBox.classList.contains('medium')) return 'medium';
     if (difficultyBox.classList.contains('hard')) return 'hard';
 }
