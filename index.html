@@ -12,42 +12,43 @@
 
     <body>
         <main class="container">
-            <h1 class="mb-4">Shamrock Hangman</h1>
+            <h1 class="mb-4 text-center">Shamrock Hangman</h1>
 
-            <div id="scoreTracker" class="mb-4 h4 text-light">Wins: 0 | Losses: 0</div>
+            <div id="scoreTracker" class="mb-4 h4 text-light text-center bg-dark p-2 rounded">Wins: 0 | Losses: 0</div>
 
             <div id="difficultySelection" class="row justify-content-center g-3">
                 <div class="col-md-4">
-                    <button class="btn btn-custom btn-difficulty easy-btn w-100" onclick="startGame('easy')">Easy</button>
+                    <button class="btn btn-success w-100 text-uppercase fw-bold" onclick="startGame('easy')">Easy</button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-custom btn-difficulty medium-btn w-100" onclick="startGame('medium')">Medium</button>
+                    <button class="btn btn-warning w-100 text-uppercase fw-bold" onclick="startGame('medium')">Medium</button>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-custom btn-difficulty hard-btn w-100" onclick="startGame('hard')">Hard</button>
+                    <button class="btn btn-danger w-100 text-uppercase fw-bold" onclick="startGame('hard')">Hard</button>
                 </div>
             </div>
 
-            <div id="difficultyBox" class="mt-3 p-3 fw-bold d-none"></div> 
+            <div id="difficultyBox" class="mt-3 p-3 fw-bold d-none rounded"></div> 
 
             <div id="gameArea" class="mt-4 d-none">
-                <h2 id="wordDisplay" class="mb-4 word-display">_ _ _ _ _</h2>
+                <div class="d-flex justify-content-center mb-3">
+                    <img src="img/image6.jpg" alt="Shamrock Health" id="shamrock" class="shamrock-img">
+                </div>
+                <h2 id="wordDisplay" class="mb-4 word-display text-center">_ _ _ _ _</h2>
 
                 <div class="d-flex justify-content-center mb-3">
-                    <input type="text" id="letterInput" maxlength="1" class="form-control w-auto me-2" placeholder="Enter a Letter">
-                    <button id="guessBtn" class="btn btn-custom btn-guess" onclick="guessLetter()">Guess</button>
+                    <input type="text" id="letterInput" maxlength="1" class="form-control w-auto me-2 text-center" placeholder="Enter a Letter">
+                    <button id="guessBtn" class="btn btn-primary" onclick="guessLetter()">Guess</button>
                 </div>
 
-                <p id="wrongLetters" class="fw-bold text-danger mb-3">Wrong Guesses: </p>
-
-                <img src="img/image6.jpg" alt="Shamrock Health" id="shamrock" class="shamrock-img mb-3">
+                <p id="wrongLetters" class="fw-bold text-danger mb-3 bg-danger-subtle p-2 rounded">Wrong Guesses: </p>
             </div>
 
             <!-- End Game Overlay -->
             <div id="endGameOverlay" class="end-game-overlay">
                 <div id="endGameText" class="end-game-text"></div>
                 <div id="endGameSubtext" class="end-game-subtext"></div>
-                <button id="endGameRestartBtn" class="btn btn-custom end-game-restart-btn" onclick="resetToLevelSelection()">Main Menu</button>
+                <button id="endGameRestartBtn" class="btn end-game-restart-btn" onclick="resetToLevelSelection()">Main Menu</button>
             </div>
         </main>
 

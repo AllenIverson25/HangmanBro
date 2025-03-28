@@ -1,6 +1,8 @@
 // Sound Effects
 const correctGuessSound = new Audio('correct-guess.mp3');
 const wrongGuessSound = new Audio('wrong-guess.mp3');
+const gameOverSound = new Audio('gameover.mp3');
+const winSound = new Audio('win.mp3');
 
 // Word List
 const wordList = [
@@ -103,7 +105,7 @@ function updateWrongGuess(guessedLetter) {
     wrongGuesses++;
     document.getElementById('wrongLetters').textContent += ` ${guessedLetter}`;
     const remainingHealth = maxMistakes - wrongGuesses;
-    document.getElementById('shamrock').src = `img/image${remainingHealth + 1}.jpg`;
+    document.getElementById('shamrock').src = `imgs/image${remainingHealth + 1}.jpg`;
 
     if (wrongGuesses === maxMistakes) {
         losses++;
@@ -139,10 +141,12 @@ function showGameResult(isWin) {
         endGameText.textContent = 'YOU WIN!';
         endGameText.className = 'end-game-text win';
         endGameSubtext.textContent = 'Great job! You guessed the word!';
+        winSound.play();
     } else {
         endGameText.textContent = 'GAME OVER';
         endGameText.className = 'end-game-text lose';
         endGameSubtext.textContent = `The word was: ${selectedWord}`;
+        gameOverSound.play();
     }
 
     overlay.style.display = 'flex';
