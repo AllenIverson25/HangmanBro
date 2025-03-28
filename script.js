@@ -103,7 +103,7 @@ function updateWrongGuess(guessedLetter) {
     wrongGuesses++;
     document.getElementById('wrongLetters').textContent += ` ${guessedLetter}`;
     const remainingHealth = maxMistakes - wrongGuesses;
-    document.getElementById('shamrock').src = `imgs/image${remainingHealth + 1}.jpg`;
+    document.getElementById('shamrock').src = `img/image${remainingHealth + 1}.jpg`;
 
     if (wrongGuesses === maxMistakes) {
         losses++;
@@ -131,43 +131,25 @@ function updateCorrectGuess(guessedLetter) {
 
 function showGameResult(isWin) {
     updateScoreDisplay();
-    const messageElement = document.getElementById('resultMessage');
-    const modalTitle = document.getElementById('resultTitle');
-    
+    const overlay = document.getElementById('endGameOverlay');
+    const endGameText = document.getElementById('endGameText');
+    const endGameSubtext = document.getElementById('endGameSubtext');
+
     if (isWin) {
-        messageElement.textContent = 'Congratulations! You won!';
-        modalTitle.textContent = 'Winner! 🎉';
-        modalTitle.className = 'modal-title text-success';
+        endGameText.textContent = 'YOU WIN!';
+        endGameText.className = 'end-game-text win';
+        endGameSubtext.textContent = 'Great job! You guessed the word!';
     } else {
-        messageElement.textContent = `Game Over! The word was: ${selectedWord}`;
-        modalTitle.textContent = 'Game Over 😢';
-        modalTitle.className = 'modal-title text-danger';
+        endGameText.textContent = 'GAME OVER';
+        endGameText.className = 'end-game-text lose';
+        endGameSubtext.textContent = `The word was: ${selectedWord}`;
     }
-    
-    const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
-    resultModal.show();
-    
-    setTimeout(() => {
-        resultModal.hide();
-        restartGame();
-    }, 3000);
+
+    overlay.style.display = 'flex';
 }
 
 function updateScoreDisplay() {
     document.getElementById('scoreTracker').textContent = `Wins: ${wins} | Losses: ${losses}`;
-}
-
-function restartGame() {
-    wrongGuesses = 0;
-    guessedLetters = [];
-    selectedWord = getRandomWord(getCurrentDifficulty());
-    displayedWord = '_'.repeat(selectedWord.length);
-    
-    document.getElementById('wrongLetters').textContent = 'Wrong Guesses: ';
-    document.getElementById('letterInput').value = '';
-    document.getElementById('shamrock').src = 'img/image6.jpg';
-    updateUI();
-    document.getElementById('letterInput').focus();
 }
 
 function getCurrentDifficulty() {
@@ -178,6 +160,11 @@ function getCurrentDifficulty() {
 }
 
 function resetToLevelSelection() {
+    wrongGuesses = 0;
+    guessedLetters = [];
+    selectedWord = '';
+    displayedWord = '';
+    
     document.getElementById('gameArea').classList.add('d-none');
     document.getElementById('difficultyBox').classList.add('d-none');
     document.getElementById('difficultySelection').classList.remove('d-none');
@@ -185,6 +172,7 @@ function resetToLevelSelection() {
     document.getElementById('wrongLetters').textContent = 'Wrong Guesses: ';
     document.getElementById('letterInput').value = '';
     document.getElementById('shamrock').src = 'img/image6.jpg';
+    document.getElementById('endGameOverlay').style.display = 'none';
 }
 
 document.getElementById('letterInput').addEventListener('keypress', (e) => {
