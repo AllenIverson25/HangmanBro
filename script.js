@@ -6,8 +6,8 @@ const winSound = new Audio('win.mp3');
 
 // Word List
 const wordList = [
-    'gold', 'luck', 'clover', 'rain', 'charm', 
-    'parade', 'leprechaun', 'treasure', 'celebration', 
+    'gold', 'luck', 'clover', 'rain', 'charm',
+    'parade', 'leprechaun', 'treasure', 'celebration',
     'greenery', 'shenanigans', 'tradition'
 ];
 
@@ -31,12 +31,12 @@ function startGame(level) {
 
     updateDifficultyDisplay(level);
     updateUI();
-    
+
     document.getElementById('gameArea').classList.remove('d-none');
     document.getElementById('difficultyBox').classList.remove('d-none');
     document.getElementById('difficultySelection').classList.add('d-none');
-    
-    document.getElementById('shamrock').src = 'img/image6.jpg';
+
+    document.getElementById('shamrock').src = 'imgs/image6.jpg';
     document.getElementById('wrongLetters').textContent = 'Wrong Guesses: ';
     document.getElementById('letterInput').focus();
     updateScoreDisplay();
@@ -105,7 +105,7 @@ function updateWrongGuess(guessedLetter) {
     wrongGuesses++;
     document.getElementById('wrongLetters').textContent += ` ${guessedLetter}`;
     const remainingHealth = maxMistakes - wrongGuesses;
-    document.getElementById('shamrock').src = `img/image${remainingHealth + 1}.jpg`;
+    document.getElementById('shamrock').src = `imgs/image${remainingHealth + 1}.jpg`;
 
     if (wrongGuesses === maxMistakes) {
         losses++;
@@ -136,20 +136,28 @@ function showGameResult(isWin) {
     const overlay = document.getElementById('endGameOverlay');
     const endGameText = document.getElementById('endGameText');
     const endGameSubtext = document.getElementById('endGameSubtext');
+    const restartBtn = document.getElementById('endGameRestartBtn');
 
     if (isWin) {
         endGameText.textContent = 'YOU WIN!';
         endGameText.className = 'end-game-text win';
         endGameSubtext.textContent = 'Great job! You guessed the word!';
         winSound.play();
+        setTimeout(() => {
+            restartBtn.classList.remove('disabled-btn');
+        }, 6000); // 8 seconds for win sound
     } else {
         endGameText.textContent = 'GAME OVER';
         endGameText.className = 'end-game-text lose';
         endGameSubtext.textContent = `The word was: ${selectedWord}`;
         gameOverSound.play();
+        setTimeout(() => {
+            restartBtn.classList.remove('disabled-btn');
+        }, 4000); // 6 seconds for game over sound
     }
 
     overlay.style.display = 'flex';
+    restartBtn.classList.add('disabled-btn');
 }
 
 function updateScoreDisplay() {
@@ -164,6 +172,9 @@ function getCurrentDifficulty() {
 }
 
 function resetToLevelSelection() {
+    const restartBtn = document.getElementById('endGameRestartBtn');
+    if (restartBtn.classList.contains('disabled-btn')) return;
+
     wrongGuesses = 0;
     guessedLetters = [];
     selectedWord = '';
@@ -175,7 +186,7 @@ function resetToLevelSelection() {
     
     document.getElementById('wrongLetters').textContent = 'Wrong Guesses: ';
     document.getElementById('letterInput').value = '';
-    document.getElementById('shamrock').src = 'img/image6.jpg';
+    document.getElementById('shamrock').src = 'imgs/image6.jpg';
     document.getElementById('endGameOverlay').style.display = 'none';
 }
 
