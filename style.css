@@ -229,3 +229,29 @@ h1 {
         display: none;
     }
 }
+.btn-primary {
+    background-color: #28a745; /* Bright green for St. Patrick's Day theme */
+    border-color: #28a745;
+    padding: 10px 20px; /* Increased padding for better touch targets */
+    font-size: 1.1rem; /* Slightly larger text for readability */
+    font-weight: bold;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transitions for hover effects */
+    width: 100%; /* Full width on smaller screens */
+    max-width: 200px; /* Limit maximum width on larger screens */
+}
+
+/* Hover effect */
+.btn-primary:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #218838;
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Active/Focused state */
+.btn-primary:active, .btn-primary:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(40, 167, 69, 0.3); /* Focus ring */
+}
