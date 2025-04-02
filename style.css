@@ -7,6 +7,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    overflow: hidden; /* Prevent scrolling during welcome screen */
 }
 
 /* Main Container */
@@ -15,6 +16,8 @@ body {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
 /* Title Styling */
@@ -116,6 +119,7 @@ h1 {
     flex-direction: column;
     text-align: center;
     display: none;
+    opacity: 100;
 }
 .end-game-text {
     font-family: 'Irish Grover', cursive;
@@ -166,4 +170,62 @@ h1 {
 .disabled-btn {
     pointer-events: none;
     opacity: 0.6;
+}
+
+/* Welcome Screen */
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeOut 14s ease-out forwards;
+}
+
+#welcomeVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2001;
+}
+
+.welcome-text {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Irish Grover', cursive;
+    font-size: 4rem;
+    color: #FFD700;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    animation: pulse 2s infinite;
+    background: linear-gradient(45deg, #2ecc71, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 2002;
+}
+
+#backgroundAudio {
+    display: none; /* Hide the audio element, but keep it functional */
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;a
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }

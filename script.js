@@ -4,11 +4,16 @@ const wrongGuessSound = new Audio('wrong-guess.mp3');     // Plays when a wrong 
 const gameOverSound = new Audio('gameover.mp3');          // Plays when the game is lost (6 seconds)
 const winSound = new Audio('win.mp3');                    // Plays when the game is won (8 seconds)
 
+// Background Audio for Welcome
+const backgroundAudio = document.getElementById('backgroundAudio');
+const welcomeVideo = document.getElementById('welcomeVideo');
+const welcomeScreen = document.getElementById('welcomeScreen');
+
 // Word List - A list of St. Patrick's Day themed words to guess
 const wordList = [
     'gold', 'luck', 'clover', 'rain', 'charm',
     'parade', 'leprechaun', 'treasure', 'celebration',
-    'greenery', 'shenanigans', 'tradition'
+    'greenery', 'shenanigans', 'tradition', "    "
 ];
 
 // Score Tracker - Keeps track of wins and losses
@@ -21,6 +26,25 @@ let displayedWord = '';          // The word shown with underscores or letters
 let wrongGuesses = 0;            // Count of incorrect guesses
 let guessedLetters = [];         // List of letters already guessed
 const maxMistakes = 6;           // Maximum number of wrong guesses allowed
+
+// Welcome Video and Audio Handling
+document.addEventListener('DOMContentLoaded', () => {
+    // Play the welcome video and background audio
+    welcomeVideo.play();
+    backgroundAudio.play();
+
+    // Fade out and hide welcome screen after 14 seconds
+    setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+        backgroundAudio.pause(); // Stop the background audio after video
+        backgroundAudio.currentTime = 0; // Reset audio
+    }, 14000); // 14 seconds
+
+    // Ensure the game area is hidden initially until video finishes
+    document.getElementById('gameArea').classList.add('d-none');
+    document.getElementById('difficultyBox').classList.add('d-none');
+    document.getElementById('difficultySelection').classList.remove('d-none');
+});
 
 // Start Game Function - Begins a new game with the chosen difficulty
 function startGame(level) {
@@ -53,7 +77,7 @@ function getRandomWord(level) {
         if (level === 'medium') return word.length >= 5 && word.length <= 7;
         if (level === 'hard') return word.length >= 8;
     });
-    return filteredWords[Math.floor(Math.random() * filteredWords.length)];
+    return filteredWords[Math.floor(Math.random() * filteredWords.length)] || wordList[0]; // Fallback to first word if none match
 }
 
 // Update Difficulty Display - Shows the current difficulty on the screen
