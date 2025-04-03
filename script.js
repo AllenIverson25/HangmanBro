@@ -1,11 +1,3 @@
-/*******************************************************************
- * ST. PATRICK'S DAY THEMED HANGMAN GAME
- * 
- * This game is a variation of the classic Hangman game with a 
- * St. Patrick's Day theme. Players guess letters to reveal a hidden
- * word. They have 6 chances (represented by shamrocks) to guess
- * incorrect letters before losing.
- *******************************************************************/
 
 // Sound Effects - These are audio files that play during the game
 // Each Audio object is initialized with the path to its sound file
